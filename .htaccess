@@ -1,0 +1,7 @@
+Options +Includes
+#XBitHack on
+
+DirectoryIndex index.shtml
+
+AddType text/html .shtml
+AddOutputFilter INCLUDES .shtml

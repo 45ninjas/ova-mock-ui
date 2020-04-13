@@ -1,0 +1,113 @@
+<div class="widget modal fan-modal" id="<!--#echo var="WIDGET_ID"-->">
+	<style>
+		#<!--#echo var="WIDGET_ID"--> #bar-1
+		{
+			fill:none;
+		}
+
+		.fan-modal
+		{
+			/* Move the fan modal to the middle of the bottom. */
+			bottom: var(--shelf-height, 4em);
+			left: 50%;
+			transform: translateX(-50%);
+
+			width:400px;
+			display: flex;
+			align-items: center;
+
+			margin-bottom: 0;
+
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+	</style>
+	<button class="big-button" ><img class="glyph fan-down" src="/~tom/projects/oca/mock-ui/graphics/minus.svg" /></button>
+	<svg class="fan-graphic glyph"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:cc="http://creativecommons.org/ns#"
+			xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:svg="http://www.w3.org/2000/svg"
+			xmlns="http://www.w3.org/2000/svg"
+			version="1.1"
+			viewBox="0 0 200 100"
+			height="100mm"
+			width="200mm">
+		<g transform="translate(0,-197)">
+			 
+			<rect
+				y="266.86539"
+				x="10.264822"
+				height="19.844761"
+				width="37.25206"
+				id="bar-1"
+				style="stroke:#000000;stroke-width:5" />
+	
+			<rect
+				y="247.02065"
+				x="56.501686"
+				height="39.68951"
+				width="37.25206"
+				id="bar-2"
+				style="stroke:#000000;stroke-width:5" />
+	
+			<rect
+				y="227.17589"
+				x="102.73861"
+				height="59.534264"
+				width="37.25206"
+				id="bar-3"
+				style="stroke:#000000;stroke-width:5" />
+	
+			<rect
+				y="207.3311"
+				x="148.97551"
+				height="79.379051"
+				width="37.25206"
+				id="bar-4"
+				style="stroke:#000000;stroke-width:5" />
+		</g>
+	</svg>	
+
+	<button class="big-button" ><img class="glyph fan-up" src="/~tom/projects/oca/mock-ui/graphics/plus.svg" /></button>
+
+	<script>
+		class FanSpeed
+		{
+			constructor(modalId, startValue, maxValue = 4)
+			{
+				this.maxValue = maxValue;
+				this.barGraphic = document.getElementById(modalId).querySelector(".fan-graphic");
+				this.SetValue(value);
+			}
+
+			SetValue(value)
+			{
+				// Clamp the value.
+				if(value > this.maxValue)
+					value = this.maxValue;
+				else if (value < 0)
+					value = 0;
+
+				// Exit out if the value did not change.
+				if(value == this.value)
+					return;
+				
+				this.value = value;
+
+				for (let i = 0; i < this.maxValue; i++)
+				{
+					var bar = this.barGraphic.querySelector(`bar-${i}`);
+					if(bar)
+					{
+						console.log(bar);
+					}
+				}
+			}
+		}
+		window.onload += function()
+		{
+
+		}
+	</script>
+</div>

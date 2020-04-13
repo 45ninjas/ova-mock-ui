@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>Hello World</title>
+    <link type="text/css" rel="stylesheet" href="style.css" />
+		<meta charset="UTF-8" />
+		<script src="/~tom/projects/oca/mock-ui/modals.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="/~tom/projects/oca/mock-ui/">Home</a>
+      <a href="/~tom/projects/oca/mock-ui/configure/">Configure</a>
+    </nav>
+    <div class="main" style="background-image:url('/~tom/projects/oca/mock-ui/graphics/SQ416.png');">
+    </div>
+    
+		<div id="modal-dark"></div>
+		
+		<!-- Include the left window modal -->
+		<!--#set var="WIDGET_ID" value="left-window-modal"-->
+    <!--#include virtual="./widgets/window-controls.shtml"-->
+
+		<!-- Include the right window modal -->
+		<!--#set var="WIDGET_ID" value="right-window-modal"-->
+		<!--#include virtual="./widgets/window-controls.shtml"-->
+
+		<!-- Include the Defog Fan modal -->
+		<!--#set var="WIDGET_ID" value="defog-fan-modal"-->
+		<!--#include virtual="./widgets/fan-speed.shtml"-->
+  
+    <div class="shelf">
+      <button class="item window" id="left-window">
+        <!-- Left Window Switch -->
+        <img class="glyph" src="/~tom/projects/oca/mock-ui/graphics/noun_power_window_172173.svg" />
+      </button>
+      <div class="item stat">
+        <!-- Battery Voltage -->
+        <img class="glyph" src="/~tom/projects/oca/mock-ui/graphics/noun_battery_warning_457497.svg" />
+        12.7 V
+      </div>
+      <button class="item" id="defog-fan">
+        <!-- Fan Speed -->
+        <img class="glyph" src="/~tom/projects/oca/mock-ui/graphics/noun_windscreen_defrost_457522.svg" />
+      </button>
+      <div class="item stat">
+        <!-- Water Temp. -->
+        <img class="glyph" src="/~tom/projects/oca/mock-ui/graphics/noun_temperature_warning_457516.svg" />
+        86 °C
+      </div>
+      <button class="item window" id="right-window">
+        <!-- Right Window Switch -->
+        <img class="glyph" src="/~tom/projects/oca/mock-ui/graphics/noun_power_window_172173.svg" />
+      </button>
+		</div>
+  
+    <script>
+			
+			var windowLModal = new Modal("left-window-modal",
+			{
+				"toggle element": document.getElementById("left-window")
+			});
+
+			var windowRModal = new Modal("right-window-modal",
+			{
+				"toggle element": document.getElementById("right-window")
+			});
+
+			var defogModal = new Modal("defog-fan-modal",
+			{
+				"toggle element": document.getElementById("defog-fan")
+			});
+      // Disable Right Clicks (When holding down a button the right click context menu appears on ubuntu)
+      document.addEventListener("contextmenu", function(e)
+      {
+        e.preventDefault();
+      }, false);
+    </script>
+  </body>
+</html>
