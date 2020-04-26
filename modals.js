@@ -15,6 +15,9 @@ class Modal {
 
 	quickClose = true;
 
+	timeoutTime = 0;
+	timeoutHandle = null;
+
 	constructor(modalId, config)
 	{
 		this.modalElement = document.getElementById(modalId);
@@ -36,7 +39,24 @@ class Modal {
 			this.quickClose = false
 
 		if(config["toggle element"])
-			config["toggle element"].onclick = function() { modal.ToggleVisible(); };
+			config["toggle element"].addEventListener("click", function() { this.ToggleVisible(); }.bind(this));
+
+		if(config["timeout"] > 0)
+		{
+			this.timeoutTime = config["timeout"];
+
+			// Stop the timeout if the button is being pressed.
+			this.modalElement.addEventListener("mousedown", function()
+			{
+				this.StopTimeout();
+			}.bind(this));
+
+			// Start the timeout when the button is released.
+			this.modalElement.addEventListener("mouseup", function()
+			{
+				this.StartTimeout();
+			}.bind(this));
+		}
 
 	}
 
@@ -50,12 +70,13 @@ class Modal {
 		{
 			console.log(`Showing the ${this.modalElement.id} modal`);
 			Modal.modalOpened(this);
-			this.ResetTimeout();
+			this.StartTimeout();
 		}
 		else
 		{
 			console.log(`Hiding the ${this.modalElement.id} modal`);
 			Modal.modalClosed(this);
+			this.StopTimeout();
 		}
 		this.modalElement.hidden = !value
 		this.isVisible = value;
@@ -65,9 +86,24 @@ class Modal {
 		this.SetVisible(!this.isVisible);
 	}
 
-	ResetTimeout()
+	StopTimeout()
 	{
-		
+		if(this.timeoutTime <= 0)
+		return;
+
+		// Remove any existing timeouts.
+		if(typeof this.timeoutHandle === 'number')
+			window.clearTimeout(this.timeoutHandle);
+	}
+	StartTimeout()
+	{
+		// Create a new timeout for this modal.
+		this.timeoutHandle = window.setTimeout(function()
+		{
+			console.log(`Closing the ${this.modalElement.id} modal due to timeout.`);
+			this.SetVisible(false);
+			
+		}.bind(this), this.timeoutTime * 1000);
 	}
 
 	static modalOpened(modal)

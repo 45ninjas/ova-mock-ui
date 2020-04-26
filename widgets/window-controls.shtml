@@ -1,4 +1,4 @@
-<div class="widget modal window-modal" id="<!--#echo var="WIDGET_ID"-->">
-	<button class="big-button"><img class="glyph window-up" src="/~tom/projects/oca/mock-ui/graphics/noun_up_82615.svg" /></button>
-	<button class="big-button"><img class="glyph window-down" src="/~tom/projects/oca/mock-ui/graphics/noun_down_82615.svg" /></button>
+<div class="widget modal window-modal from-down" id="<!--#echo var="WIDGET_ID"-->">
+	<button class="big-button"><img class="glyph window-up" draggable="false" src="/~tom/projects/oca/mock-ui/graphics/noun_up_82615.svg" /></button>
+	<button class="big-button"><img class="glyph window-down" draggable="false" src="/~tom/projects/oca/mock-ui/graphics/noun_down_82615.svg" /></button>
 </div>

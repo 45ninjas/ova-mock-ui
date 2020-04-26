@@ -6,6 +6,15 @@
 	--shelf-height: 4em;
 }
 
+body
+{
+  margin: 0;
+  padding: 0;
+  font-family: roboto, sans-serif;
+	background-color: #273c4f;
+	-moz-user-select: none;
+} 
+
 nav
 {
   position: fixed;
@@ -106,74 +115,9 @@ nav a:hover
 	background-color: var(--primary-colour);
 }
 
-[hidden].modal
-{
-	display: none;
-}
-
-body
-{
-  margin: 0;
-  padding: 0;
-  font-family: roboto, sans-serif;
-  background-color: #273c4f;
-}
-
-.modal
-{
-  position: fixed;
-  background-color: #ece9e5;
-  border-radius: var(--radius);
-  margin: 12px;
-  padding: 8px;
-  box-shadow: var(--shadow);
-}
-
-.modal-down-arrow:after
-{
-	content: " ";
-	position: absolute;
-	border: 12px solid transparent;
-	border-top: 12px solid #ece9e5;
-	left: 50%;
-	bottom: -12px;
-	transform: translate(-50%, 50%);
-}
-
-.window-modal
-{
-  display: flex;
-  position: fixed;
-  flex-direction: column;
-	bottom: var(--shelf-height);
-	margin: 0;
-}
-
-#left-window-modal
-{
-	left: 0;
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-}
-
-#right-window-modal
-{
-	right: 0;
-	border-top-right-radius: 0;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-}
-
 #modal-dark
 {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-color: #0000009e;
-	/* backdrop-filter: blur(2px); */
+	position: fixed;
 }
 
 @font-face

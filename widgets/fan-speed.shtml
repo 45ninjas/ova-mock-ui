@@ -1,4 +1,4 @@
-<div class="widget modal fan-modal" id="<!--#echo var="WIDGET_ID"-->">
+<div class="widget modal fan-modal from-down" id="<!--#echo var="WIDGET_ID"-->">
 	<style>
 		#<!--#echo var="WIDGET_ID"--> #bar-1
 		{
@@ -21,8 +21,13 @@
 			border-bottom-left-radius: 0;
 			border-bottom-right-radius: 0;
 		}
+
+		[hidden].from-down.fan-modal
+		{
+			transform: translate(-50%, 100%);
+		}
 	</style>
-	<button class="big-button" ><img class="glyph fan-down" src="/~tom/projects/oca/mock-ui/graphics/minus.svg" /></button>
+	<button class="big-button" ><img class="glyph fan-down" draggable="false" src="/~tom/projects/oca/mock-ui/graphics/minus.svg" /></button>
 	<svg class="fan-graphic glyph"
 			xmlns:dc="http://purl.org/dc/elements/1.1/"
 			xmlns:cc="http://creativecommons.org/ns#"
@@ -69,7 +74,7 @@
 		</g>
 	</svg>	
 
-	<button class="big-button" ><img class="glyph fan-up" src="/~tom/projects/oca/mock-ui/graphics/plus.svg" /></button>
+	<button class="big-button" ><img class="glyph fan-up" draggable="false" src="/~tom/projects/oca/mock-ui/graphics/plus.svg" /></button>
 
 	<script>
 		class FanSpeed
